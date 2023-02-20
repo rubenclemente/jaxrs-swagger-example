@@ -1,0 +1,27 @@
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>io.undertow.servlet.handlers.DefaultServlet</servlet-class>
+        <init-param>
+            <param-name>allowed-extensions</param-name>
+            <param-value>xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>directory-listing</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>resolve-against-context-root</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/swagger-ui/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>

@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response;
 
 import io.swagger.annotations.*;
 import org.example.model.Message;
+import org.example.model.Messages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +22,10 @@ public class MessageApi {
     @GET
     @Path("/messages")
     @Produces(MediaType.APPLICATION_JSON)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Message.class)})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK ALL", response = Messages.class)})
     public Response getAllMessages() {
-        List<Message> messageList = new ArrayList<>();
-        messageList.add(newMessage(1));
-        messageList.add(newMessage(2));
-        messageList.add(newMessage(3));
         return Response.status(Response.Status.OK)
-                .entity(messageList).build();
+                .entity(getMessages()).build();
     }
 
     @GET
@@ -68,6 +65,16 @@ public class MessageApi {
     public Response deleteMessage(@PathParam("id") int id) {
         return Response.status(Response.Status.ACCEPTED)
                 .entity(newMessage(id)).build();
+    }
+
+    private Object getMessages() {
+        List<Message> messageList = new ArrayList<>();
+        messageList.add(newMessage(1));
+        messageList.add(newMessage(2));
+        messageList.add(newMessage(3));
+        Messages messages = new Messages();
+        messages.setMessages(messageList);
+        return messages;
     }
 
     private Message newMessage(int id) {

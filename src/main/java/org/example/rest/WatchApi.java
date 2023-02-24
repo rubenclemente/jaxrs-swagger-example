@@ -5,6 +5,7 @@ package org.example.rest;
 //import jakarta.ws.rs.core.Response;
 
 import io.swagger.annotations.Api;
+import org.example.service.ServerWatch;
 
 import javax.inject.Inject;
 import javax.json.Json;

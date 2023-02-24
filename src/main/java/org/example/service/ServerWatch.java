@@ -1,4 +1,4 @@
-package org.example.rest;
+package org.example.service;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
